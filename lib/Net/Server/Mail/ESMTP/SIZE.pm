@@ -3,7 +3,7 @@ package Net::Server::Mail::ESMTP::SIZE;
 use strict;
 use base qw(Net::Server::Mail::ESMTP::Extension);
 use vars qw($VERSION);
-$VERSION     = '0.02';
+$VERSION     = '0.03';
 
 sub init {
     my ($self, $parent) = @_;
@@ -37,6 +37,8 @@ sub reply_mail_from {
 
     if (defined ($self->{'_size_option_result'})){
         return @{ $self->{'_size_option_result'} };
+    } else {
+		return($code, $message);
     }
 }
 
@@ -96,6 +98,8 @@ Net::Server::Mail::ESMTP::SIZE - add support for the SIZE ESMTP extension to Net
 Add the ESMTP SIZE extension to Net::Server::Mail::ESMTP. I stubbed this extension
 when I wrote Test::SMTP and thought it would be nice to finish it off.
 
+Note: This is a patched, unauthorized version of the original module.
+
 =head1 METHODS
 
 =over
@@ -117,6 +121,14 @@ Register the plugin in the ESMTP object, and then call set_size on the object in
     CAPSiDE
     jlmartinez@capside.com
     http://www.pplusdomain.net
+
+    Original Patch (not used here, but it gave Rene the idea whats wrong):
+    Christian Felsing hostmaster@taunusstein.net
+
+    This workaround module:
+    Rene Schickbaue
+    rene.schickbauer@magnapowertrain.com
+
 
 =head1 COPYRIGHT
 
